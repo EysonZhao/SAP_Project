@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<title>sap.m.ComboBox</title>
+		<script id="sap-ui-bootstrap"
+				src="resources/sap-ui-core.js"
+				data-sap-ui-libs="sap.m,sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-xx-bindingSyntax="complex"
+				data-sap-ui-resourceroots='{
+		           "sme.perf.ui": "./"
+		        }' >
+		</script>
+		<style type="text/css">
+			.customLabel {
+				margin: 0 0.5rem;
+				vertical-align: middle;
+				vertical-align: -webkit-baseline-middle;
+			}
+		</style>
+		<script>
+		jQuery.sap.require("sap.ui.layout.form.Form");
+		jQuery.sap.require("sme.perf.ui.controller.ComboBoxEx");
+		sap.ui.localResources("controller");
+		
+		var oStatusComboBox = new sme.perf.ui.controller.ComboBoxEx({
+				comboBoxName: "statusComboBox",
+				keyValuePath: "statusEnumModel>id",
+				textValuePath: "statusEnumModel>name",
+				itemsValuePath: "statusEnumModel>/status",
+				itemsValueModel: "statusEnumModel",
+				parentValueModel: "statusUpdateModel",
+				selectedField: "status"
+         });
+		
+		statusEnum =  [{id: 1, name: "New"}, {id: 2, name: "Plan"}, {id: 3, name: "Testing"}, {id: 4, name: "Done"}, {id: 5, name: "Blocked"}, {id: 6, name: "Pending"}, {id: 7, name: "Terminated"}];
+		
+		var oStatusEnumModel = new sap.ui.model.json.JSONModel({status: statusEnum});
+		oStatusComboBox.setModel(oStatusEnumModel, "statusEnumModel");
+		
+		oStatusComboBox.placeAt("content");
+		
+		</script>
+	</head>
+	<body id="body" class="sapUiBody">
+		<div id="content"></div>
+	</body>
+</html>

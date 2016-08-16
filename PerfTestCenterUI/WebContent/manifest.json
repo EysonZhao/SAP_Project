@@ -1,0 +1,267 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+    "_version": "1.1.0",
+    "id": "sme.perf.ui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "ach": "CA-UI5-DOC"
+  },
+  "sap.ui": {
+    "_version": "1.1.0",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_bluecrystal"
+    ]
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "rootView": "sme.perf.ui.view.App",
+    "viewType": "JS",
+    "dependencies": {
+      "minUI5Version": "1.30",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "config": {
+    	"serviceBaseUrl": "http://localhost:9090"
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sme.perf.ui.i18n.i18n"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "JS",
+        "viewPath": "sme.perf.ui.view",
+        "controlId": "mySplitApp",
+        "controlAggregation": "detailPages",
+        "clearTarget": false,
+        "transition": "slide",
+        "bypassed": {
+           "target": "notFound"
+        }
+      },
+      "routes": [
+        {
+        	"pattern": "",
+        	"name": "home",
+        	"view": "Home",
+        	"viewLevel": 1,
+        	"targetAggregation": "masterPages"
+        },
+        {
+        	"pattern": "testrequestlist",
+        	"name": "testrequestlist",
+        	"view": "TestRequestList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "testrequestdetail/{operation}/:requestId:",
+        	"name": "testrequestdetail",
+        	"view": "TestRequestDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "statusUpdate/{requestId}",
+        	"name": "statusupdate",
+        	"view": "StatusUpdate",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "statusreport",
+        	"name": "statusreport",
+        	"view": "StatusReport",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "testissue/{requestId}",
+        	"name": "testissue",
+        	"view": "TestIssue",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "testrequestattachment/{requestId}",
+        	"name": "testrequestattachment",
+        	"view": "TestRequestAttachment",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executionlist",
+        	"name": "executionlist",
+        	"view": "ExecutionList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "projectlist",
+        	"name": "projectlist",
+        	"view": "ProjectList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "projectdetail/:projectId:",
+        	"name": "projectdetail",
+        	"view": "ProjectDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "scenariolist",
+        	"name": "scenariolist",
+        	"view": "ScenarioList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "scenariodetail/:scenarioId:",
+        	"name": "scenariodetail",
+        	"view": "ScenarioDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "hostlist",
+        	"name": "hostlist",
+        	"view": "HostList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "hostdetail/:hostId:",
+        	"name": "hostdetail",
+        	"view": "HostDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executionlist",
+        	"name": "executionlist",
+        	"view": "ExecutionList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executiongrouplist",
+        	"name": "executiongrouplist",
+        	"view": "ExecutionGroupList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executiongroupdetail/:executionGroupId:",
+        	"name": "executiongroupdetail",
+        	"view": "ExecutionGroupDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executiondetail/:executionId:",
+        	"name": "executiondetail",
+        	"view": "ExecutionDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executionrundetail/:executionId:",
+        	"name": "executionrundetail",
+        	"view": "ExecutionRunDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executionmodule/{executionId}:?tab:",
+        	"name": "executionmodule",
+        	"view": "ExecutionModule",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executionresultlist",
+        	"name": "executionresultlist",
+        	"view": "ExecutionResultList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "executionresultdetail/{executionId}",
+        	"name": "executionresultdetail",
+        	"view": "ExecutionResultDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "testissuereport",
+        	"name": "testissuereport",
+        	"view": "TestIssueReport",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "analysistemplatelist",
+        	"name": "analysistemplatelist",
+        	"view": "AnalysisTemplateList",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "analysistransaction",
+        	"name": "analysistransaction",
+        	"view": "AnalysisTransaction",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "analysistemplatedetail/:id:",
+        	"name": "analysistemplatedetail",
+        	"view": "AnalysisTemplateDetail",
+        	"viewLevel": 2,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "fileupload",
+        	"name": "fileupload",
+        	"view": "FileUpload",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        },
+        {
+        	"pattern": "zissuereport",
+        	"name": "zissuereport",
+        	"view": "ZIssueReport",
+        	"viewLevel": 1,
+        	"targetAggregation": "detailPages"
+        }
+      ],
+      "targets": {
+        "notFound": {
+           "viewName": "NotFound",
+           "transition": "show"
+        }
+      }
+    }
+  }
+}

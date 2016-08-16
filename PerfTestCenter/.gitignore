@@ -1,0 +1,9 @@
+/target/
+/upload/
+/logs/
+/ExecExport/
+/ExecImport/
+/Essential/
+/AnalysisTemplate/
+/Report/
+/TestResultRepository/

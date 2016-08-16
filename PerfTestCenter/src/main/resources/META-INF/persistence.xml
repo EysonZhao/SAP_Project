@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  <!-- Source Database-->
+  <persistence-unit name="PerfTestCenter" transaction-type="RESOURCE_LOCAL">
+    <!-- sme.perf.entity -->
+    <class>sme.perf.entity.Project</class>
+    <class>sme.perf.entity.Category</class>
+    <class>sme.perf.entity.Host</class>
+    <class>sme.perf.entity.Scenario</class>
+    <!-- sme.perf.execution.entity -->
+    <class>sme.perf.execution.entity.ExecutionInfo</class>
+    <class>sme.perf.execution.entity.ExecutionTaskInfo</class>
+    <class>sme.perf.execution.entity.ExecutionResultInfo</class>
+    <class>sme.perf.execution.entity.ExecutionGroupInfo</class>
+    <!-- sme.perf.request.entity -->
+    <class>sme.perf.request.entity.StatusUpdate</class>
+    <class>sme.perf.request.entity.Attachment</class>
+    <class>sme.perf.request.entity.TestRequest</class>
+    <class>sme.perf.request.entity.TestIssue</class>
+    <class>sme.perf.request.entity.StatusReportItem</class>
+    <class>sme.perf.request.entity.TestIssueReportItem</class>
+    <class>sme.perf.request.entity.ZIssueFinalReportItem</class>
+    <!-- sme.perf.task.entity -->
+    
+    <!-- sme.perf.task.analysis -->
+    <class>sme.perf.analysis.entity.AnalysisTemplate</class>
+    <class>sme.perf.analysis.entity.AnalysisTransaction</class> 
+    <class>sme.perf.analysis.entity.Throughput</class> 
+    <class>sme.perf.analysis.entity.UserNumbers</class>
+    <class>sme.perf.analysis.entity.Transactiontimeanalysis</class>
+    <class>sme.perf.ta.enetity.TA_Category</class>
+    <properties>
+      <!-- for HANA
+      <property name="javax.persistence.jdbc.driver" value="com.sap.db.jdbc.Driver" />  
+      <property name="javax.persistence.jdbc.url" value="jdbc:sap://10.58.114.214:30315?currentschema=PERFTESTRESULT" />
+      <property name="javax.persistence.jdbc.user" value="SYSTEM" />
+      <property name="javax.persistence.jdbc.password" value="manager" />
+      <property name="eclipselink.target-database" value="HANA" />
+      -->
+      <!-- for SQL Server-->
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=PerfTestCenterBackEnd;reconnect=true" />
+      <property name="javax.persistence.jdbc.user" value="sa" />
+      <property name="javax.persistence.jdbc.password" value="SAPB1Admin" />
+      
+      <!-- for debug
+      <property name="eclipselink.logging.level" value="FINE"/>
+	  <property name="eclipselink.logging.parameters" value="true"/>
+	   -->
+      <!-- EclipseLink should create the database schema automatically -->
+      <!--<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />-->
+      <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="both" />
+      <!-- <property name="eclipselink.logging.level" value="ALL" />  -->
+      <property name="eclipselink.query-results-cache" value="true"/>
+      <property name="eclipselink.cache.shared.default" value="false"/>
+      <property name="eclipselink.jdbc.bind-parameters" value="false"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="PerfTestCenterResult" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <!-- sme.perf.result.entity -->
+    <class>sme.perf.result.entity.IOHeader</class>
+    <class>sme.perf.result.entity.IOSubLine</class>
+    <class>sme.perf.result.entity.ResultSession</class>
+    <class>sme.perf.result.entity.TopHeader</class>
+    <class>sme.perf.result.entity.TopSubLine</class>
+    <class>sme.perf.result.entity.TransactionResponseTime</class>
+    <class>sme.perf.result.entity.TransactionResponseTimeCache</class>
+    <class>sme.perf.result.entity.ImportedSessionIds</class>
+    <class>sme.perf.result.entity.JmeterLog</class>
+    <class>sme.perf.result.entity.DockerStatsHeader</class>
+    <class>sme.perf.result.entity.DockerStatsSubLine</class>
+    <class>sme.perf.result.entity.Machine</class>
+    <!-- sme.perf.analysis.entity -->   
+    <class>sme.perf.analysis.entity.AnalysisSession</class>
+    <class>sme.perf.analysis.entity.AnalysisJmeter</class>
+    <class>sme.perf.analysis.entity.AnalysisCpuMemory</class>
+    <class>sme.perf.analysis.entity.AnalysisIO</class> 
+    <class>sme.perf.analysis.entity.Transactiontimeanalysis</class>  
+    <!-- sme.perf.result.entity.benchmark -->
+    <class>sme.perf.result.entity.benchmark.CpuMemoryInfoSummary</class>
+    <class>sme.perf.result.entity.benchmark.JmeterLogSummary</class>
+    <class>sme.perf.result.entity.benchmark.RequestSummary</class>
+    <class>sme.perf.result.entity.benchmark.IOInfoSummary</class>
+    <class>sme.perf.request.entity.Central_Codeline</class>
+    <properties>
+      <!-- for HANA
+      <property name="javax.persistence.jdbc.driver" value="com.sap.db.jdbc.Driver" />  
+      <property name="javax.persistence.jdbc.url" value="jdbc:sap://10.58.114.214:30315?currentschema=PERFTESTRESULT" />
+      <property name="javax.persistence.jdbc.user" value="SYSTEM" />
+      <property name="javax.persistence.jdbc.password" value="manager" />
+      <property name="eclipselink.target-database" value="HANA" />
+      -->
+      <!-- for SQL Server Local Debug-->
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=PerfCenterResultDebug;reconnect=true" />
+      <property name="javax.persistence.jdbc.user" value="sa" />
+      <property name="javax.persistence.jdbc.password" value="SAPB1Admin" />
+      
+      <!-- for SQL Server
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://10.58.120.189:1433;databaseName=PERFCENTER;reconnect=true" />
+      <property name="javax.persistence.jdbc.user" value="sa" />
+      <property name="javax.persistence.jdbc.password" value="SAPB1Admin" />
+      -->
+      <!-- for debug
+      <property name="eclipselink.logging.level" value="FINE"/>
+	  <property name="eclipselink.logging.parameters" value="true"/>
+	   -->
+      <!-- EclipseLink should create the database schema automatically -->
+      <!--<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />-->
+      <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="both" />
+      <!-- 
+      <property name="eclipselink.logging.level" value="ALL" />-->
+      <property name="eclipselink.query-results-cache" value="false"/>
+      <property name="eclipselink.cache.shared.default" value="false"/>
+      <property name="eclipselink.session.customizer" value="sme.perf.utility.DFSessionIsolationLevel"/>
+        <!--  Optimization #9 - statement caching -->
+        <property name="eclipselink.jdbc.cache-statements" value="true" />
+        <!--  Optimization #10 - batch writing -->
+        <property name="eclipselink.jdbc.batch-writing" value="JDBC" />
+        <property name="eclipselink.jdbc.batch-writing.size" value="15000" />
+        <!--  Optimization #11 - disable caching for batch insert (caching only improves reads, so only adds overhead for inserts) -->
+        <property name="eclipselink.cache.shared.default" value="false" />
+        <!--  Except for Customer which is shared by orders -->
+        <property name="eclipselink.cache.shared.Customer" value="true" />
+        <!--  Optimization #12 - turn logging off -->
+        <!-- property name="eclipselink.logging.level" value="FINE" /-->
+        <property name="eclipselink.logging.level" value="off" />
+        <!--  Optimization #13 - close EntityManager on commit, to avoid cost of resume -->
+        <property name="eclipselink.persistence-context.close-on-commit" value="true" />
+        <!--  Optimization #14 - avoid auto flush cost on query execution -->
+        <property name="eclipselink.persistence-context.flush-mode" value="commit" />
+        <!--  Optimization #15 - avoid cost of persist on commit -->
+        <property name="eclipselink.persistence-context.persist-on-commit" value="false" />
+    </properties>
+  </persistence-unit>
+</persistence> 

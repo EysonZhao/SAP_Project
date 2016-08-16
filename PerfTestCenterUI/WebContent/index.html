@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.unified,sap.m,sap.ui.commons,sap.suite.ui.commons,sap.ui.table,sap.me"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-bindingSyntax="complex"
+		        data-sap-ui-compatVersion="edge"
+		        data-sap-ui-preload="async"
+		        data-sap-ui-resourceroots='{
+		           "sme.perf.ui": "./"
+		        }' >
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+		<script type="text/javascript" src="view/Utility.js"></script>
+		<script type="text/javascript" src="model/Common.js"></script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+		<script>
+		//sap.ui.localResources("controller");
+		jQuery.sap.require("sme.perf.ui.controller.ComboBoxEx");
+		jQuery.sap.require("sap.m.MessageBox");
+        sap.ui.getCore().attachInit(function () {
+            new sap.ui.core.ComponentContainer({
+               name : "sme.perf.ui"
+            }).placeAt("content");
+         });
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
